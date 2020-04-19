@@ -19,7 +19,7 @@ weatherForm.addEventListener("submit", (e) => {
         .json()
         .then(
           (response) =>
-            (messageTwo.textContent = `location: ${response.location.location} - forecast:  ${response.forecast.temperature}`)
+            (messageTwo.textContent = `location: ${response.location.location} - forecast:  ${response.forecast.temperature}  local_time: ${response.forecast.time}`)
         )
     );
   }
