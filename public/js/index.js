@@ -15,12 +15,13 @@ weatherForm.addEventListener("submit", (e) => {
     messageOne.textContent = "please enter search";
   } else {
     fetch(`/weather?address=${value}`).then((res) =>
-      res
-        .json()
-        .then(
-          (response) =>
-            (messageTwo.textContent = `location: ${response.location.location} - forecast:  ${response.forecast.temperature}  local_time: ${response.forecast.time}`)
-        )
+      res.json().then((response) => {
+        if (response.error) {
+          messageOne.textContent = response.error
+        } else {
+          messageTwo.textContent = `location: ${response.location.location} - forecast:  ${response.forecast.temperature}  local_time: ${response.forecast.time}`;
+        }
+      })
     );
   }
 });

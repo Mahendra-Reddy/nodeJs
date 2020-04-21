@@ -11,7 +11,10 @@ const geoCode = (address, callback) => {
         console.log("unable to connect weather service");
       } else if (response.body.error) {
         console.log("something went wrong");
-      } else {
+      } else if(!response.body.features.length){
+        callback({error})
+      }
+      else {
         callback(null, {
           latitude: response.body.features[0].center[1],
           longitude: response.body.features[0].center[0],

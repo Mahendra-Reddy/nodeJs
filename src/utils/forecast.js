@@ -12,11 +12,10 @@ const forecast = (longitude, latitude, callback) => {
       } else if (response.body.error) {
         console.log("something went wrong");
       } else {
-        console.log(response.body)
         callback(null, {
           temperature: response.body.current.temperature,
           precip: response.body.current.precip,
-          time: response.body.location.localtime
+          time: response.body.location.localtime,
         });
       }
     }
